@@ -1,0 +1,6 @@
+{
+  "name": "ECS12",
+  "short_name": "ECS12",
+  "display": "standalone",
+  "icons": [{ "src": "icon.png", "type": "image/png", "sizes": "192x192" }]
+}
