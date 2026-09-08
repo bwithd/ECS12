@@ -20,6 +20,9 @@ export function Nav() {
         <NavLink to="location" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
           Venue
         </NavLink>
+        <NavLink to="EDI" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
+          EDI
+        </NavLink>
         <NavLink to="apply" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
           Register
         </NavLink>

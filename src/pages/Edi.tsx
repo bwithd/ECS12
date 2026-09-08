@@ -2,116 +2,162 @@ import { Heading, InternalLink, List } from "../components/Elements";
 
 export function Edi() {
   return (
-    <main className="m-auto flex min-h-screen max-w-7xl flex-col gap-4 bg-white pb-32 text-gray-900 sm:pb-24 dark:bg-gray-900 dark:text-gray-100">
-      <Heading text="Statement on equity and inclusion" />
-      <p>
-        The organisers are committed to making the school productive and
-        enjoyable for everyone, regardless of sex, gender identity, sexual
-        orientation, disability, age, physical appearance, body size, ethnicity,
-        nationality or religion/belief.
-      </p>
-      <p>
-        We will not tolerate harassment of participants, students or tutors, in
-        any form.
-      </p>
-      <p>
-        We are committed to achieving a balanced and diverse panel of speakers
-        at all our events by inviting speakers of all races, ethnicities,
-        genders, ages, abilities, religions, and sexual orientation without
-        compromising the quality, and remaining within the topic, of the
-        programme. All speakers will have agreed to the Code of Conduct prior to
-        agreeing to speak at the event.
-      </p>
-      <p>
-        As part of the registration process, attendees will be required to agree
-        to adhere to the CCP4 Code of Conduct (see below).
-      </p>
-      <Heading text="The CCP4 Code of Conduct" />
-      <p>Behave professionally.</p>
-      <p>
-        Harassment and sexist, racist, or exclusionary comments or jokes are not
-        appropriate. Harassment includes sustained disruption of talks or other
-        events, inappropriate physical contact, sexual attention or innuendo,
-        deliberate intimidation, stalking, and photography or recording of an
-        individual without consent. It also includes offensive or belittling
-        comments related to sex, gender identity, sexual orientation,
-        disability, age, physical appearance, body size, ethnicity, nationality
-        or religion/belief.
-      </p>
-      <p>
-        All communication should be appropriate for a professional audience
-        including people of many different backgrounds. Sexual language and
-        imagery are not appropriate.
-      </p>
-      <p>Be kind to others. Do not insult or put down other attendees.</p>
-      <p>
-        Delegates are reminded that the organisers reserve the right to remove
-        any person who does not adhere to the code of conduct.
-      </p>
-      <Heading text="Incident reporting and resolution" />
-      <p>
-        If you observe someone making you or anyone else feel unsafe or
-        unwelcome, please tell them so, and remind them of the Code of Conduct.
-        If you are hesitant about addressing the person yourself, report it as
-        soon as possible to a member of the Organising Committee. The Committee
-        is committed to addressing and resolving the matter to the best of their
-        abilities.
-      </p>
-      <p>
-        Please use the <InternalLink to="/contact" text="Contact" /> section
-        here, and explain what happened and who was involved so that we can
-        investigate.
-      </p>
-      <p>
-        Thank you for your participation in the CCP4 community, and your efforts
-        to keep our conference welcoming, respectful, and friendly for all
-        participants!
-      </p>
-      <Heading text="Sanctions" />
-      <p>
-        When someone is asked to stop any behaviour that makes others
-        uncomfortable, they are expected to comply immediately.
-      </p>
-      <p>
-        In response to inappropriate behaviour (e.g. sexual content, rudeness,
-        unprofessional) organisers may take any action they deem appropriate,
-        including warning the person in question, asking them to leave the
-        event, or removing them from a mailing list.
-      </p>
-      <p>Specific actions may include but are not limited to:</p>
-      <List>
-        <li>
-          asking the person to cease the inappropriate behaviour, and warning
-          them that any further reports will result in other sanctions
-        </li>
-        <li>
-          requiring that the person avoid any interaction with, and physical
-          proximity to, another person for the remainder of the event
-        </li>
-        <li>early termination of a talk that violates the policy</li>
-        <li>
-          not publishing the video or slides of a talk that violates the policy
-        </li>
-        <li>
-          not allowing a speaker who violated the policy to give (further) talks
-          at the event
-        </li>
-        <li>
-          immediately ending any event responsibilities or privileges held
-        </li>
-        <li>
-          requiring that the person immediately leave the event and not return
-        </li>
-        <li>
-          blocking the person on social media platforms (for a defined time
-          period)
-        </li>
-        <li>
-          banning the person from future events (for a defined time period)
-        </li>
-        <li>publishing an anonymous account of the harassment</li>
-        <li>reporting the incident to the person's employer</li>
-      </List>
+    <main className="m-auto flex min-h-screen max-w-7xl flex-col gap-6 bg-white pb-24 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+      
+      <section>
+        <Heading text="Statement on Equity and Inclusion" />
+
+        <p>
+          The ECS12 Organising Committee supports and promotes gender equality
+          in line with the IUCr policy.
+        </p>
+
+        <p>
+          The International Union of Crystallography aims to achieve gender
+          balance across its activities, while also recognising diversity,
+          geographic representation, and academic disciplines.
+        </p>
+
+        <p>
+          To support this goal, IUCr promotes fair representation in committees,
+          events, and leadership roles. Event organisers are expected to
+          demonstrate efforts toward gender balance.
+        </p>
+
+        <p>
+          The ECS12 Organising Committee also supports both IUCr and CCP4 Codes
+          of Conduct.
+        </p>
+
+        <p>
+          <strong>No form of harassment will be tolerated.</strong>
+        </p>
+
+        <p>
+          We are committed to a diverse and balanced panel of speakers,
+          welcoming individuals of all:
+        </p>
+
+        <List>
+          <li>Races and ethnicities</li>
+          <li>Genders and gender identities</li>
+          <li>Ages and abilities</li>
+          <li>Religions and beliefs</li>
+          <li>Sexual orientations</li>
+        </List>
+
+        <p>
+          All speakers must agree to the Code of Conduct before participating.
+          Attendees must also agree to the CCP4 Code of Conduct during
+          registration.
+        </p>
+      </section>
+
+      <section>
+        <Heading text="CCP4 Code of Conduct" />
+
+        <p><strong>Be professional.</strong></p>
+
+        <p>
+          Harassment, discrimination, or exclusionary behaviour is not
+          acceptable. This includes:
+        </p>
+
+        <List>
+          <li>Disrupting talks or events</li>
+          <li>Inappropriate physical contact</li>
+          <li>Unwanted attention or intimidation</li>
+          <li>Recording individuals without consent</li>
+          <li>Offensive or belittling comments</li>
+        </List>
+
+        <p>
+          These behaviours may relate to characteristics such as gender identity,
+          sexual orientation, disability, age, appearance, ethnicity,
+          nationality, or religion.
+        </p>
+
+        <p>
+          All communication must remain respectful and appropriate for a
+          professional audience. Sexual language or imagery is not allowed.
+        </p>
+
+        <p>
+          <strong>Be kind and respectful.</strong> Do not insult or put down
+          others.
+        </p>
+
+        <p>
+          Organisers reserve the right to remove anyone who does not follow this
+          code.
+        </p>
+      </section>
+
+      <section>
+        <Heading text="Incident Reporting and Resolution" />
+
+        <p>
+          If someone makes you or others feel unsafe or unwelcome, you are
+          encouraged to speak up.
+        </p>
+
+        <p>
+          If you are not comfortable addressing the situation directly, report it
+          to a member of the Organising Committee as soon as possible.
+        </p>
+
+        <p>
+          Reports can be submitted via the{" "}
+          <InternalLink to="/contact" text="contact page" />. Please include:
+        </p>
+
+        <List>
+          <li>What happened</li>
+          <li>Who was involved</li>
+          <li>Any relevant context</li>
+        </List>
+
+        <p>
+          The Committee will handle all reports seriously and work to resolve
+          issues appropriately.
+        </p>
+
+        <p>
+          Thank you for helping maintain a welcoming, respectful, and inclusive
+          environment.
+        </p>
+      </section>
+
+      <section>
+        <Heading text="Sanctions" />
+
+        <p>
+          If someone is asked to stop inappropriate behaviour, they must comply
+          immediately.
+        </p>
+
+        <p>
+          Organisers may take appropriate action, including warnings, removal
+          from events, or banning from future participation.
+        </p>
+
+        <p>Possible actions include:</p>
+
+        <List>
+          <li>Issuing a warning</li>
+          <li>Restricting interaction with others</li>
+          <li>Ending a talk early</li>
+          <li>Withholding publication of content</li>
+          <li>Removing speaking privileges</li>
+          <li>Ending event responsibilities</li>
+          <li>Removing the individual from the event</li>
+          <li>Blocking on social platforms</li>
+          <li>Banning from future events</li>
+          <li>Publishing an anonymous report</li>
+          <li>Informing the individual’s employer</li>
+        </List>
+      </section>
+
     </main>
   );
 }
