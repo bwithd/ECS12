@@ -1,131 +1,98 @@
+import type { Person } from "./people";
 import {
-  diamond_house,
-  lecture_theatre,
-  mx_village,
-  campus_bus,
-  market,
-  wildwood,
-} from "./locations";
-
-// Define a custom WorkshopLocation type to avoid conflict with the global Location
-type WorkshopLocation =
-  | typeof diamond_house
-  | typeof lecture_theatre
-  | typeof mx_village
-  | typeof campus_bus
-  | typeof market
-  | typeof wildwood;
-import {
-  airlie_mccoy,
-  amy_thompson,
-  ana_gonzalez,
-  andrew_quigley,
-  andrea_thorn,
-  andrey_lebedev,
-  anna_warren,
-  blake_balcomb,
-  clemens_vonrhein,
-  dan_rigden,
-  danny_axford,
-  daren_fearon,
-  david_aragão,
-  david_lawson,
-  david_waterman,
-  ed_lowe,
-  elspeth_garman,
+  adam_simpkin,
+  ailsa_powell,
+  alisia_fadini,
+  conor_wild,
+  ed_griffen,
+  eda_capkin,
   eugene_krissinel,
-  felicity_bertram,
-  graeme_winter,
-  grzegorz_chojnowski,
-  halina_mikolajek,
-  elisabet_jimenez,
-  isabel_usón,
-  jordan_dialpuri,
-  judit_debreczeni,
-  kamel_elomari,
-  kay_diederichs,
+  fergus_imrie,
+  filipe_menezes,
+  fiona_sorrell,
+  frank_von_delft,
+  genevieve_evans,
+  ibrahim_roshan_kunnakattu,
+  ilaria_gimondi,
+  jasmin_aschenbrenner,
   lucrezia_catapano,
-  lucy_schofield,
-  marco_mazzorana,
-  maria_fando,
-  michail_isupov,
-  oleg_kovalevskiy,
-  paul_bond,
-  pierre_aller,
-  ramona_duman,
-  robbie_joosten,
-  rob_nicholls,
-  ronan_keegan,
-  sandra_eltschkner,
-  stuart_mcnicholas,
-  hans_gildenast,
-  charles_ballard,
+  maria_jose_sanchez_barrena,
+  pat_walters,
+  rowan_walker_gibbons,
+  tom_davies,
+  warren_thompson,
 } from "./people";
 
-import type { Person } from "./people";
+export type SessionType =
+  | "Lecture"
+  | "Practical"
+  | "Meal"
+  | "Break"
+  | "Other"
+  | "Sponsor"
+  | "Students"
+  | "Social";
 
-interface Session {
-  title: string;
-  type: "Lecture" | "Practical" | "Meal" | "Break" | "Other";
-  time: string;
-  speakers?: Person[];
-  location?: WorkshopLocation;
-}
-
-// added ZoomInfo and allow Day to include zoom link
-type ZoomInfo = {
-  url: string;
-  meetingId?: string;
-  passcode?: string;
+// Slot colours, matching the original schedule spreadsheet
+export const colourForType: Record<SessionType, string> = {
+  Lecture: "#e2efda",
+  Practical: "#d9e1f2",
+  Meal: "#fff2cc",
+  Break: "#fff2cc",
+  Other: "#ffffff",
+  Sponsor: "#93c47d",
+  Students: "#9fc5e8",
+  Social: "#ffccff",
 };
 
-interface Day {
+export interface Session {
   title: string;
-  sessions: Session[];
-  zoom?: ZoomInfo;
+  type: SessionType;
+  time: string;
+  speakers?: Person[];
 }
 
-const zday1: Day = {
-  title: "Zoom Day 1 - Mon 3rd Nov",
-  zoom: {
-    url: "https://diamondlight.zoom.us/j/94055217079?pwd=zc4TY1C9euw7C3wAoLoJITaaabhfHd.1",
-    meetingId: "940 5521 7079",
-    passcode: "122468",
-  },
+export interface Day {
+  title: string;
+  tab: { day: string; sub: string };
+  sessions: Session[];
+}
+
+const day1: Day = {
+  title: "Day 1 - Mon 21st Jun: Overview",
+  tab: { day: "Day 1", sub: "Mon 21 Jun · Overview" },
   sessions: [
     {
-      title: "Informal hello / meet and greet",
+      title: "Registration",
       type: "Other",
-      time: "09:15",
+      time: "09:00",
     },
     {
-      title: "Roadmap for the workshop",
-      type: "Lecture",
+      title: "Opening",
+      type: "Other",
       time: "09:30",
-
-      speakers: [maria_fando, david_waterman],
     },
     {
-      title: "Students introduction (3 mins each)",
+      title: "Introduction to Design-Make-Test aspects of the DMTA drug-discovery pipeline",
       type: "Lecture",
       time: "10:00",
+      speakers: [warren_thompson],
     },
     {
       title: "Break",
       type: "Break",
-      time: "10:45",
-    },
-    {
-      title: "Students introduction (3 mins each)",
-      type: "Lecture",
       time: "11:00",
     },
     {
-      title: "MX at Diamond and INSTRUCT-ERIC",
+      title: "Role of CCP4 in drug discovery",
       type: "Lecture",
-      time: "11:45",
-
-      speakers: [marco_mazzorana],
+      time: "11:15",
+      speakers: [eugene_krissinel],
+    },
+    {
+      title: "CCP4 Cloud: ligand fitting",
+      type: "Practical",
+      time: "12:00",
     },
     {
       title: "Lunch",
@@ -133,257 +100,55 @@ const zday1: Day = {
       time: "12:30",
     },
     {
-      title: "Cryocrystallography",
-      type: "Lecture",
-      time: "13:00",
-
-      speakers: [elspeth_garman],
-    },
-    {
-      title: "Navigating Diamond SynchWeb and test log in",
-      type: "Practical",
-      time: "13:45",
-    },
-
-    {
-      title: "Break",
-      type: "Break",
-      time: "14:30",
-    },
-
-    {
-      title: "Introduction to CCP4",
-      type: "Lecture",
-      time: "14:45",
-
-      speakers: [charles_ballard],
-    },
-  ],
-};
-
-const zday2: Day = {
-  title: "Zoom Day 2 - Mon 10th Nov",
-  sessions: [
-    {
-      title: "Informal housekeeping",
-      type: "Other",
-      time: "09:15",
-    },
-    {
-      title: "Bioinformatics for structural biologists",
-      type: "Lecture",
-      time: "09:30",
-
-      speakers: [dan_rigden],
-    },
-    {
-      title: "AlphaFold use for experimental structural biology",
-      type: "Lecture",
-      time: "10:15",
-      speakers: [oleg_kovalevskiy],
-    },
-    {
-      title: "Break",
-      type: "Break",
-      time: "11:00",
-    },
-    {
-      title: "Basic Diffraction Theory",
-      type: "Lecture",
-      time: "11:15",
-
-      speakers: [kamel_elomari],
-    },
-    {
-      title: "Data Collection Strategies for Photon Counting Detectors",
-      type: "Lecture",
-      time: "12:00",
-      speakers: [hans_gildenast],
-    },
-    {
-      title: "Lunch",
-      type: "Meal",
-      time: "12:45",
-    },
-    {
-      title: "Optimising the Diamond experience",
+      title: "Using machine learning approaches in early SBDD",
       type: "Lecture",
       time: "13:30",
-      speakers: [david_lawson],
+      speakers: [adam_simpkin],
     },
     {
-      title: "Twinning",
+      title: "Fragment screening in drug discovery at Diamond",
       type: "Lecture",
       time: "14:15",
-      speakers: [andrea_thorn],
-    },
-  ],
-};
-
-const zday3: Day = {
-  title: "Zoom Day 3 - Mon 17th Nov",
-  sessions: [
-    {
-      title: "Informal housekeeping",
-      type: "Other",
-      time: "09:15",
-    },
-    {
-      title: "Introduction to CCP4 Cloud",
-      type: "Practical",
-      time: "09:30",
-
-      speakers: [maria_fando],
-    },
-    {
-      title: "Data Processing (inc scaling)",
-      type: "Lecture",
-      time: "10:15",
-      speakers: [ana_gonzalez],
-    },
-
-    {
-      title: "Break",
-      type: "Break",
-      time: "11:00",
-    },
-    {
-      title: "Intro to space groups and symmetry",
-      type: "Lecture",
-      time: "11:15",
-      speakers: [andrey_lebedev],
-    },
-    {
-      title: "Dose driven data collection to optimise your experiments",
-      type: "Lecture",
-      time: "12:00",
-      speakers: [david_aragão],
-    },
-    {
-      title: "Lunch",
-      type: "Meal",
-      time: "13:00",
-    },
-    {
-      title: "Radiation Damage",
-      type: "Lecture",
-      time: "13:45",
-      speakers: [elspeth_garman],
+      speakers: [ailsa_powell],
     },
     {
       title: "Break",
       type: "Break",
-      time: "14:45",
-    },
-    {
-      title: "Follow up Fed ID problems and Q&A",
-      type: "Practical",
       time: "15:00",
-      speakers: [marco_mazzorana],
-    },
-  ],
-};
-
-const day1: Day = {
-  title: "Day 1 - Mon 24th Nov",
-  sessions: [
-    {
-      title: "X35 bus from Wantage to Diamond",
-      type: "Other",
-      time: "08:32",
-      location: market,
     },
     {
-      title: "Registration",
-      type: "Other",
-      time: "09:00",
-      location: diamond_house,
+      title: "DECTRIS",
+      type: "Sponsor",
+      time: "15:15",
     },
     {
-      title: "Welcome to Diamond",
-      type: "Lecture",
-      time: "09:15",
-      location: lecture_theatre,
+      title: "Students introduction",
+      type: "Students",
+      time: "16:15",
     },
     {
-      title: "XDS demo/tutorial",
-      type: "Practical",
-      time: "09:30",
-      location: lecture_theatre,
-      speakers: [kay_diederichs],
-    },
-    {
-      title: "DIALS demo/tutorial",
-      type: "Practical",
-      time: "10:30",
-      location: lecture_theatre,
-    },
-    {
-      title: "I24",
-      type: "Lecture",
-      time: "12:00",
-      location: lecture_theatre,
-      speakers: [danny_axford],
-    },
-    {
-      title: "Lunch",
-      type: "Meal",
-      time: "12:15",
-    },
-    {
-      title: "Data collection and processing",
-      type: "Practical",
-      time: "13:00",
-      location: mx_village,
-    },
-    {
-      title: "DIALS demo/tutorial",
-      type: "Practical",
-      time: "13:00",
-      location: lecture_theatre,
-    },
-    {
-      title: "Dinner",
-      type: "Meal",
-      time: "18:15",
-    },
-    {
-      title: "Work on your own data",
-      type: "Practical",
-      time: "19:15",
-      location: lecture_theatre,
-    },
-    {
-      title: "Coach back to Wantage",
-      type: "Other",
-      time: "20:15",
-      location: diamond_house,
+      title: "Social",
+      type: "Social",
+      time: "17:30",
     },
   ],
 };
 
 const day2: Day = {
-  title: "Day 2 - Tue 25th Nov",
+  title: "Day 2 - Tue 22nd Jun: Design",
+  tab: { day: "Day 2", sub: "Tue 22 Jun · Design" },
   sessions: [
     {
-      title: "X35 bus from Wantage to Diamond",
-      type: "Other",
-      time: "08:32",
-      location: market,
+      title: "Medicinal chemistry for SBDD",
+      type: "Lecture",
+      time: "09:00",
+      speakers: [ed_griffen],
     },
     {
-      title: "Assessing data quality",
+      title: "Case studies in drug design",
       type: "Lecture",
-      time: "09:15",
-      location: lecture_theatre,
-      speakers: [kay_diederichs],
-    },
-    {
-      title: "Multi-crystal approaches",
-      type: "Lecture",
-      time: "10:15",
-      location: lecture_theatre,
-      speakers: [amy_thompson],
+      time: "10:00",
+      speakers: [maria_jose_sanchez_barrena],
     },
     {
       title: "Break",
@@ -391,96 +156,71 @@ const day2: Day = {
       time: "11:00",
     },
     {
-      title: "Pathologies and pseudosymmetry",
+      title: "OpenBind",
       type: "Lecture",
       time: "11:15",
-      location: lecture_theatre,
-      speakers: [andrey_lebedev],
+      speakers: [frank_von_delft],
     },
     {
-      title: "VMXi",
-      type: "Lecture",
+      title: "GOLD for protein-ligand docking",
+      type: "Practical",
       time: "12:00",
-      location: lecture_theatre,
-      speakers: [halina_mikolajek],
+      speakers: [ilaria_gimondi],
     },
     {
       title: "Lunch",
       type: "Meal",
-      time: "12:15",
+      time: "12:30",
     },
     {
-      title: "Work on your own data",
+      title: "GOLD for protein-ligand docking",
       type: "Practical",
-      time: "13:00",
-      location: lecture_theatre,
+      time: "13:30",
+      speakers: [ilaria_gimondi],
+    },
+    {
+      title: "Practical",
+      type: "Practical",
+      time: "14:15",
     },
     {
       title: "Break",
       type: "Break",
+      time: "15:00",
+    },
+    {
+      title: "Enamine",
+      type: "Sponsor",
       time: "15:15",
     },
     {
-      title: "Work on your own data",
-      type: "Practical",
-      time: "15:30",
-      location: lecture_theatre,
+      title: "Students introduction",
+      type: "Students",
+      time: "16:15",
     },
     {
-      title: "Poster session with drinks",
-      type: "Break",
-      time: "17:15",
-      location: diamond_house,
-    },
-    {
-      title: "Dinner",
-      type: "Meal",
-      time: "18:15",
-    },
-    {
-      title: "Work on your own data",
-      type: "Practical",
-      time: "19:15",
-      location: lecture_theatre,
-    },
-    {
-      title: "Coach back to Wantage",
-      type: "Other",
-      time: "20:15",
-      location: diamond_house,
+      title: "Diamond tour",
+      type: "Social",
+      time: "17:30",
     },
   ],
 };
 
 const day3: Day = {
-  title: "Day 3 - Wed 26th Nov",
+  title: "Day 3 - Wed 23rd Jun: Make",
+  tab: { day: "Day 3", sub: "Wed 23 Jun · Make" },
   sessions: [
     {
-      title: "X35 bus from Wantage to Diamond",
-      type: "Other",
-      time: "08:32",
-      location: market,
-    },
-    {
-      title: "The phase problem",
+      title: "OpenFold and ROCKET",
       type: "Lecture",
-      time: "09:15",
-      location: lecture_theatre,
-      speakers: [ed_lowe],
+      time: "09:00",
+      speakers: [alisia_fadini],
     },
     {
-      title: "Anomalous diffraction in 2025",
+      title: "Affinity predictions/ML",
       type: "Lecture",
       time: "10:00",
-      location: lecture_theatre,
-      speakers: [ramona_duman],
-    },
-    {
-      title: "XFEL Hub",
-      type: "Lecture",
-      time: "10:45",
-      location: lecture_theatre,
-      speakers: [pierre_aller],
+      speakers: [fergus_imrie],
     },
     {
       title: "Break",
@@ -488,97 +228,64 @@ const day3: Day = {
       time: "11:00",
     },
     {
-      title: "MX from an Industrial Perspective",
+      title: "Next generation co-folding models, blind challenges and data",
       type: "Lecture",
       time: "11:15",
-      location: lecture_theatre,
-      speakers: [judit_debreczeni],
+      speakers: [pat_walters],
     },
     {
-      title: "VMXm",
-      type: "Lecture",
+      title: "Practical",
+      type: "Practical",
       time: "12:00",
-      location: lecture_theatre,
-      speakers: [anna_warren],
     },
     {
       title: "Lunch",
       type: "Meal",
-      time: "12:15",
+      time: "12:30",
     },
     {
-      title: "An introduction to Coot & Moorhen",
-      type: "Lecture",
-      time: "13:00",
-      location: lecture_theatre,
-      speakers: [lucrezia_catapano],
-    },
-    {
-      title: "New developments in model building and validation",
-      type: "Lecture",
-      time: "13:45",
-      location: lecture_theatre,
-      speakers: [grzegorz_chojnowski],
-    },
-    {
-      title: "Work on your own data",
+      title: "Practical",
       type: "Practical",
-      time: "14:30",
-      location: lecture_theatre,
+      time: "13:30",
     },
     {
       title: "Break",
       type: "Break",
+      time: "15:00",
+    },
+    {
+      title: "Eli Lilly",
+      type: "Sponsor",
       time: "15:15",
     },
     {
-      title: "Work on your own data",
+      title: "Practical",
       type: "Practical",
-      time: "15:30",
-      location: lecture_theatre,
+      time: "16:15",
     },
     {
-      title: "Dinner",
-      type: "Meal",
-      time: "18:15",
-    },
-    {
-      title: "Work on your own data",
-      type: "Practical",
-      time: "19:15",
-      location: lecture_theatre,
-    },
-    {
-      title: "Coach back to Wantage",
-      type: "Other",
-      time: "20:15",
-      location: diamond_house,
+      title: "Excursion",
+      type: "Social",
+      time: "17:30",
     },
   ],
 };
 
 const day4: Day = {
-  title: "Day 4 - Thu 27th Nov",
+  title: "Day 4 - Thu 24th Jun: Test",
+  tab: { day: "Day 4", sub: "Thu 24 Jun · Test" },
   sessions: [
     {
-      title: "X35 bus from Wantage to Diamond",
-      type: "Other",
-      time: "08:32",
-      location: market,
+      title: "HT structural data generation",
+      type: "Lecture",
+      time: "09:00",
+      speakers: [jasmin_aschenbrenner],
     },
     {
-      title: "Molecular replacement",
+      title: "HT structure analysis",
       type: "Lecture",
-      time: "09:15",
-      location: lecture_theatre,
-      speakers: [airlie_mccoy],
-    },
-    {
-      title: "MR Experiences",
-      type: "Lecture",
-      time: "10:15",
-      location: lecture_theatre,
-      speakers: [michail_isupov],
+      time: "10:00",
+      speakers: [conor_wild],
     },
     {
       title: "Break",
@@ -586,105 +293,72 @@ const day4: Day = {
       time: "11:00",
     },
     {
-      title: "MR with AlphaFold in CCP4 Cloud",
+      title: "HT affinity data generation",
       type: "Lecture",
       time: "11:15",
-      location: lecture_theatre,
-      speakers: [ronan_keegan],
+      speakers: [eda_capkin],
+    },
+    {
+      title: "PANDDA",
+      type: "Practical",
+      time: "12:00",
+      speakers: [conor_wild],
     },
     {
       title: "Lunch",
       type: "Meal",
-      time: "12:15",
+      time: "12:30",
     },
     {
-      title: "Model building and DM",
-      type: "Lecture",
-      time: "13:00",
-      location: lecture_theatre,
-      speakers: [paul_bond],
-    },
-    {
-      title: "Refinement",
-      type: "Lecture",
-      time: "13:45",
-      location: lecture_theatre,
-      speakers: [rob_nicholls],
-    },
-    {
-      title: "Validation quiz/tutorial",
+      title: "COOT & Moorhen",
       type: "Practical",
-      time: "14:30",
-      location: lecture_theatre,
-      speakers: [robbie_joosten],
+      time: "13:30",
+      speakers: [lucrezia_catapano],
+    },
+    {
+      title: "Practical",
+      type: "Practical",
+      time: "14:15",
     },
     {
       title: "Break",
       type: "Break",
+      time: "15:00",
+    },
+    {
+      title: "High-throughput determination of protein-ligand complexes",
+      type: "Sponsor",
       time: "15:15",
+      speakers: [tom_davies],
     },
     {
-      title: "Carbohydrate & Nucleic acid crystallography",
-      type: "Lecture",
-      time: "15:30",
-      location: lecture_theatre,
-      speakers: [lucy_schofield, jordan_dialpuri],
-    },
-    {
-      title: "Work on your own data",
+      title: "Practical",
       type: "Practical",
-      time: "16:30",
-      location: lecture_theatre,
+      time: "16:15",
     },
     {
-      title: "Dinner",
-      type: "Meal",
-      time: "18:15",
-    },
-    {
-      title: "Work on your own data",
-      type: "Practical",
-      time: "19:15",
-      location: lecture_theatre,
-    },
-    {
-      title: "Coach back to Wantage",
-      type: "Other",
-      time: "20:15",
-      location: diamond_house,
+      title: "School dinner",
+      type: "Social",
+      time: "17:30",
     },
   ],
 };
 
 const day5: Day = {
-  title: "Day 5 - Fri 28th Nov",
+  title: "Day 5 - Fri 25th Jun: Analyse",
+  tab: { day: "Day 5", sub: "Fri 25 Jun · Analyse" },
   sessions: [
     {
-      title: "X35 bus from Wantage to Diamond",
-      type: "Other",
-      time: "08:32",
-      location: market,
-    },
-    {
-      title: "Refinement case studies",
+      title: "Ligand tools in PDBe",
       type: "Lecture",
-      time: "09:15",
-      location: lecture_theatre,
-      speakers: [clemens_vonrhein],
+      time: "09:00",
+      speakers: [ibrahim_roshan_kunnakattu, genevieve_evans],
     },
     {
-      title: "Buster tutorial",
-      type: "Practical",
+      title: "QM for ligands",
+      type: "Lecture",
       time: "10:00",
-      location: lecture_theatre,
-      speakers: [clemens_vonrhein],
-    },
-    {
-      title: "XChem",
-      type: "Lecture",
-      time: "10:45",
-      location: lecture_theatre,
-      speakers: [blake_balcomb],
+      speakers: [filipe_menezes],
     },
     {
       title: "Break",
@@ -692,81 +366,55 @@ const day5: Day = {
       time: "11:00",
     },
     {
-      title: "Refinement with ligands / AceDRG",
+      title: "Lecture (TBC)",
       type: "Lecture",
       time: "11:15",
-      location: lecture_theatre,
-      speakers: [rob_nicholls],
     },
     {
-      title: "Membrane Protein Laboratory",
-      type: "Lecture",
+      title: "PDBe",
+      type: "Practical",
       time: "12:00",
-      location: lecture_theatre,
-      speakers: [andrew_quigley],
+      speakers: [ibrahim_roshan_kunnakattu],
     },
     {
       title: "Lunch",
       type: "Meal",
-      time: "12:15",
+      time: "12:30",
     },
     {
-      title: "Advanced Coot and ligand fitting",
-      type: "Lecture",
-      time: "13:00",
-      location: lecture_theatre,
-      speakers: [lucrezia_catapano],
-    },
-    {
-      title: "CCP4MG",
+      title: "CSD-CrossMiner",
       type: "Practical",
-      time: "13:45",
-      location: lecture_theatre,
-      speakers: [stuart_mcnicholas],
+      time: "13:30",
+      speakers: [ilaria_gimondi],
     },
     {
-      title: "Verification",
-      type: "Lecture",
-      time: "14:30",
-      location: lecture_theatre,
-      speakers: [isabel_usón, elisabet_jimenez],
+      title: "InPocket",
+      type: "Practical",
+      time: "14:15",
+      speakers: [filipe_menezes],
     },
     {
       title: "Break",
       type: "Break",
+      time: "15:00",
+    },
+    {
+      title: "Proteintech",
+      type: "Sponsor",
       time: "15:15",
     },
     {
-      title: "Model validation, optimisation and deposition",
-      type: "Lecture",
-      time: "15:30",
-      location: lecture_theatre,
-      speakers: [robbie_joosten],
-    },
-    {
-      title: "Poster prize winner",
-      type: "Other",
-      time: "16:15",
-    },
-    {
-      title: "Work on your own data",
+      title: "XChem Pipeline",
       type: "Practical",
-      time: "16:30",
-      location: lecture_theatre,
+      time: "16:15",
+      speakers: [rowan_walker_gibbons, fiona_sorrell],
     },
     {
-      title: "Coach back to Wantage",
-      type: "Other",
-      time: "18:25",
-      location: diamond_house,
-    },
-    {
-      title: "Workshop Dinner",
-      type: "Meal",
-      time: "19:00",
-      location: wildwood,
+      title: "Farewell",
+      type: "Social",
+      time: "17:15",
     },
   ],
 };
 
-export const days = [zday1, zday2, zday3, day1, day2, day3, day4, day5];
+export const days = [day1, day2, day3, day4, day5];

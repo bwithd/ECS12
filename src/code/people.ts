@@ -59,4 +59,23 @@ export const warren_thompson : Person = {
   availability: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5"],
 };
 
+export const eugene_krissinel: Person = { name: "Eugene Krissinel" };
+export const adam_simpkin: Person = { name: "Adam Simpkin" };
+export const ailsa_powell: Person = { name: "Ailsa Powell" };
+export const ed_griffen: Person = { name: "Ed Griffen" };
+export const maria_jose_sanchez_barrena: Person = { name: "Maria Jose Sanchez Barrena" };
+export const frank_von_delft: Person = { name: "Frank von Delft" };
+export const alisia_fadini: Person = { name: "Alisia Fadini" };
+export const fergus_imrie: Person = { name: "Fergus Imrie" };
+export const pat_walters: Person = { name: "Pat Walters" };
+export const jasmin_aschenbrenner: Person = { name: "Jasmin Aschenbrenner" };
+export const conor_wild: Person = { name: "Conor Wild" };
+export const eda_capkin: Person = { name: "Eda Capkin" };
+export const tom_davies: Person = { name: "Tom Davies" };
+export const ibrahim_roshan_kunnakattu: Person = { name: "Ibrahim Roshan Kunnakattu" };
+export const genevieve_evans: Person = { name: "Genevieve Evans" };
+export const filipe_menezes: Person = { name: "Filipe Menezes" };
+export const rowan_walker_gibbons: Person = { name: "Rowan Walker-Gibbons" };
+export const fiona_sorrell: Person = { name: "Fiona Sorrell" };
+
 export const people: Person[] = [maria_fando, david_waterman, chris_orr, lucrezia_catapano, ilaria_gimondi, warren_thompson];
