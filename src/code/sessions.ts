@@ -16,11 +16,11 @@ import {
   ilaria_gimondi,
   jasmin_aschenbrenner,
   lucrezia_catapano,
-  maria_jose_sanchez_barrena,
-  pat_walters,
+  anthony_bradley,
   rowan_walker_gibbons,
   tom_davies,
   warren_thompson,
+  louise_dunnett,
 } from "./people";
 
 export type SessionType =
@@ -117,7 +117,7 @@ const day1: Day = {
       time: "15:00",
     },
     {
-      title: "DECTRIS",
+      title: "",
       type: "Sponsor",
       time: "15:15",
     },
@@ -148,7 +148,7 @@ const day2: Day = {
       title: "Case studies in drug design",
       type: "Lecture",
       time: "10:00",
-      speakers: [maria_jose_sanchez_barrena],
+      speakers: [fiona_sorrell],
     },
     {
       title: "Break",
@@ -228,10 +228,10 @@ const day3: Day = {
       time: "11:00",
     },
     {
-      title: "Next generation co-folding models, blind challenges and data",
+      title: "AI in drug-discovery the good, bad and ugly",
       type: "Lecture",
       time: "11:15",
-      speakers: [pat_walters],
+      speakers: [anthony_bradley],
     },
     {
       title: "Practical",
@@ -366,9 +366,10 @@ const day5: Day = {
       time: "11:00",
     },
     {
-      title: "Lecture (TBC)",
+      title: "The AXL",
       type: "Lecture",
       time: "11:15",
+      speakers: [louise_dunnett]
     },
     {
       title: "PDBe",

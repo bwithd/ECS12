@@ -8,7 +8,7 @@ export interface Sponsor {
 export const bca: Sponsor = {
   name: "BCA",
   url: "https://www.crystallography.org.uk/",
-  logo: "bca.gif",
+  logo: "bca.svg",
 };
 
 export const ccp4: Sponsor = {
@@ -42,4 +42,16 @@ export const thermofisher: Sponsor = {
   logo: "thermofisher.svg",
 };
 
+export const dectris: Sponsor = {
+  name: "DECTRIS",
+  url: "https://www.dectris.com",
+  logo: "DECTRIS.svg",
+};
 
+export const eca: Sponsor = {
+  name: "ECA",
+  url: "https://www.ecanews.org",
+  logo: "eca.svg",
+};
+
+export const confirmedSponsors: Sponsor[] = [ccp4, eca, dectris, bca];

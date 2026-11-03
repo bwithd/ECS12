@@ -11,6 +11,9 @@ export function Nav() {
         <NavLink to="programme" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
           Programme
         </NavLink>
+        <NavLink to="sponsors" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
+          Sponsors
+        </NavLink>
         <NavLink to="Contact" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
           Contact
         </NavLink>

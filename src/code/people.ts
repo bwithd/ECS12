@@ -67,7 +67,7 @@ export const maria_jose_sanchez_barrena: Person = { name: "Maria Jose Sanchez Ba
 export const frank_von_delft: Person = { name: "Frank von Delft" };
 export const alisia_fadini: Person = { name: "Alisia Fadini" };
 export const fergus_imrie: Person = { name: "Fergus Imrie" };
-export const pat_walters: Person = { name: "Pat Walters" };
+export const anthony_bradley: Person = { name: "Anthony Bradley" };
 export const jasmin_aschenbrenner: Person = { name: "Jasmin Aschenbrenner" };
 export const conor_wild: Person = { name: "Conor Wild" };
 export const eda_capkin: Person = { name: "Eda Capkin" };
@@ -77,5 +77,6 @@ export const genevieve_evans: Person = { name: "Genevieve Evans" };
 export const filipe_menezes: Person = { name: "Filipe Menezes" };
 export const rowan_walker_gibbons: Person = { name: "Rowan Walker-Gibbons" };
 export const fiona_sorrell: Person = { name: "Fiona Sorrell" };
+export const louise_dunnett: Person = {name: "Louise Dunnett"}
 
 export const people: Person[] = [maria_fando, david_waterman, chris_orr, lucrezia_catapano, ilaria_gimondi, warren_thompson];
